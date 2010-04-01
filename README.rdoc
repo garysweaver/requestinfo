@@ -1,0 +1,33 @@
+= Requestinfo
+
+I've written webapps that just print out the HTTP request headers long ago, but usually lately I've been working with Apache fronted Tomcat instances where Apache had mod_php installed, so I could just use the php:
+
+And when I'm trying to see HTTP headers from the client, I can just use Firefox's LiveHttpHeaders plugin.
+
+However, I wanted to verify that certain headers were actually coming into Tomcat (after going through something that in turn went through Apache to get to Tomcat).
+
+This app is heavily based on sinatra-example: git://github.com/vertis/sinatra-example.git. I mostly used the instructions found here: http://www.coreguardian.org/2010/02/21/sinatra-on-java/. I was too lazy to setup a Sinatra app from scratch for this, and the file layout and cucumber test in the vertis sinatra-example was clean.
+
+== Setup
+
+Requires jruby (I used 1.4.0). http://jruby.org/
+
+In addition I did this to get all the jars needed:
+    jruby -S gem install sinatra warbler haml cucumber webrat
+
+== Test
+
+Optionally you can test with:
+    jruby -S rake
+    jruby -S rake spec
+
+== Build
+
+then to build war with same name as directory use:
+    jruby -S warble
+
+== Deployment and Usage
+
+Deploy the war by copying into webapps directory in Tomcat (assuming you have it configured to automatically deploy).
+
+Then hit that webapp (for example: http://yourserver/requestinfo/ ) and see the result of request.inspect.
