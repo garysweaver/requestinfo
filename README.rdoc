@@ -1,6 +1,7 @@
 = Requestinfo
 
 I've written webapps that just print out the HTTP request headers long ago, but usually lately I've been working with Apache fronted Tomcat instances where Apache had mod_php installed, so I could just use the php:
+    <pre><? print_r($_SERVER); ?></pre>
 
 And when I'm trying to see HTTP headers from the client, I can just use Firefox's LiveHttpHeaders plugin.
 
